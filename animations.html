@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive animations — Zdeněk Pěčonka</title>
+  <meta name="description" content="Interactive animations — a thesis demo on how interactive animations can improve programming language documentation, plus more interactive animation experiments.">
+  <meta property="og:title" content="Interactive animations — Zdeněk Pěčonka">
+  <meta property="og:description" content="Interactive animations — a thesis demo on how interactive animations can improve programming language documentation, plus more interactive animation experiments.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232f5bea%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EZP%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/@rive-app/canvas@2.44.2/rive.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="index.html">Zdeněk Pěčonka</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+        <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html#work">← All projects</a></p>
+        <h1>Interactive animations</h1>
+        <p class="lead">I am interested in interactive animations and exploring ways to push beyond the limitations of standard HTML elements and conventional UI components. I believe that <strong>interactive animations</strong> can convey complex information more clearly, while also enhancing <strong>ergonomics, visual rhetoric, and aesthetics</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px;">
+      <div class="container">
+        <div class="prose">
+          <p>Because of my interest in interactive animation, I decided to write a thesis on how interactive animations could improve programming language documentation. Long story short — I created a few interactive animations which hopefully display how asynchronous callbacks work in JS.</p>
+          <p>If you are interested, try to complete this <a href="https://tally.so/r/XxYkdY" target="_blank" rel="noopener">quiz</a> which I used as a way to measure how well interactive visualizations can actually transfer complex information.</p>
+        </div>
+        <p style="margin-top: 24px;"><a class="btn" href="https://tally.so/r/XxYkdY" target="_blank" rel="noopener">Complete the quiz</a></p>
+
+        <div class="frame frame-main" style="margin-top: 36px;">
+          <iframe src="https://zdenekp03.github.io/async-callback/" title="Interactive demonstration of asynchronous callbacks in JavaScript — thesis demo" loading="lazy"></iframe>
+        </div>
+        <p class="frame-link"><a href="https://zdenekp03.github.io/async-callback/" target="_blank" rel="noopener">Open in new tab ↗</a></p>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="glass-bg" aria-hidden="true">
+        <span class="glass-shape shape-circle"></span>
+        <span class="glass-shape shape-square"></span>
+        <span class="glass-shape shape-triangle"></span>
+        <span class="glass-shape shape-ring"></span>
+        <span class="glass-shape shape-pill"></span>
+      </div>
+      <div class="container">
+        <h2 class="section-title">More interactive animations</h2>
+        <div class="frame-grid">
+          <div class="frame-entry">
+            <canvas class="rive-canvas" data-rive-src="assets/animations/robo.riv" role="img" aria-label="Interactive animation: robo"></canvas>
+            <p class="frame-caption">Meet the mysterious robo. His intentions are unknown. He is curious about strangers’ cursors and sends happy signals when they click near him.</p>
+          </div>
+          <div class="frame-entry">
+            <canvas class="rive-canvas" data-rive-src="assets/animations/wind_turbine.riv" data-rive-artboard="Artboard 2" data-rive-wind-input="windspeed" data-rive-lat="50.0926" data-rive-lon="14.4022" data-rive-touch-scroll role="img" aria-label="Interactive animation: wind turbine"></canvas>
+            <p class="frame-caption">My dad has recently become interested in wind turbines, so I decided to build one for him. This animation is data-driven: its rotation speed is calculated every 15 minutes based on wind speed data from the Open-Meteo API.</p>
+          </div>
+          <div class="frame-entry">
+            <canvas class="rive-canvas" data-rive-src="assets/animations/tree.riv" data-rive-click-trigger="trigger_wind" data-rive-touch-scroll role="img" aria-label="Interactive animation: tree"></canvas>
+            <p class="frame-caption">Do you also forget to water your flower? This might be a plant you can handle. It survives without water or sun. Click to summon wind, click to stop it.</p>
+          </div>
+          <div class="frame-entry">
+            <canvas class="rive-canvas" data-rive-src="assets/animations/greeter.riv" data-rive-text-run="name" data-rive-touch-scroll role="img" aria-label="Interactive animation: greeter"></canvas>
+            <p class="frame-caption">This is a professional greeter. It will call you however you want. Just write your name and be greeted. The bottom part will react to your cursor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:z.peconka@gmail.com">z.peconka@gmail.com</a>
+        <a href="tel:+420774141504">+420 774 141 504</a>
+      </div>
+      <p class="footer-copy">© <span id="year">2026</span> Zdeněk Pěčonka</p>
+    </div>
+  </footer>
+</body>
+</html>

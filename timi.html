@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timi — Zdeněk Pěčonka</title>
+  <meta name="description" content="Timi — time tracking app case study: product design, discovery and AI-assisted build for a small project-based team.">
+  <meta property="og:title" content="Timi — Zdeněk Pěčonka">
+  <meta property="og:description" content="Timi — time tracking app case study: product design, discovery and AI-assisted build for a small project-based team.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232f5bea%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EZP%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="index.html">Zdeněk Pěčonka</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+        <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="case">
+      <div class="container case-head">
+        <p class="breadcrumb"><a href="index.html#work">← All projects</a></p>
+        <h1>Timi</h1>
+        <p class="case-tagline">A lightweight timesheet &amp; task app I designed and vibe-coded from scratch to replace chaotic manual tracking for on-site workers who don't read Czech, aren't fluent in the Latin alphabet, and aren't tech-savvy.</p>
+      </div>
+
+      <div class="container case-body">
+
+        <img class="case-hero" src="assets/img/timi-hero.png" alt="Timi app on three phone screens showing the dashboard, task logging and approvals" width="1024" height="1024">
+
+        <section>
+          <h2>At a glance</h2>
+          <table class="meta-table">
+            <tbody>
+              <tr>
+                <th scope="row">Role</th>
+                <td>Product / UX design, solution architecture, delivery &amp; maintenance (solo, AI-assisted build)</td>
+              </tr>
+              <tr>
+                <th scope="row">Background</th>
+                <td>UX Research &amp; Design (Ing.) + 1 year as a low-code FE developer — comfortable with HTML/CSS and basic JS, thinks through data and permissions, verifies by testing</td>
+              </tr>
+              <tr>
+                <th scope="row">Context</th>
+                <td>Internal tool for a small project-based team, no dev team</td>
+              </tr>
+              <tr>
+                <th scope="row">Stack</th>
+                <td>React + Vite + TypeScript, Tailwind + shadcn/ui, Supabase (PostgreSQL + Auth)</td>
+              </tr>
+              <tr>
+                <th scope="row">Status</th>
+                <td>In internal use</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="callout">
+          <p><strong>TL;DR:</strong> Team leads tracked everyone's hours manually — error-prone, no history, monthly pain. Excel couldn't handle hierarchical categorization or mobile entry. I tested 8+ existing tools and none fit (too complex, not mobile-friendly, no Ukrainian, paywalled time tracking). So I designed and built Timi: log work in 2–3 taps, directly from a task card, with daily/weekly/monthly control and a lightweight approval flow for leads.</p>
+        </div>
+
+        <section>
+          <h2>1. The problem</h2>
+          <p>A small team doing project-based manual work. The lead organized the work and kept all records manually.</p>
+          <p>What that meant in practice:</p>
+          <ul>
+            <li>Hours were written down and summed by hand at the end of the month</li>
+            <li>Missing descriptions and categorization → impossible to say how much time went to which activity</li>
+            <li>Manual sums → errors → tension in the team</li>
+            <li>Long-term unsustainable</li>
+          </ul>
+          <p><strong>Design challenge:</strong> How to let people — including Cyrillic-script readers who don't speak Czech, and workers with low digital literacy — log categorized work from a phone, on-site, in seconds, with near-zero training, at near-zero cost?</p>
+
+          <h3>Constraints I designed for</h3>
+          <ol>
+            <li><strong>Low cost</strong> — free / student tiers only</li>
+            <li><strong>Language &amp; accessibility</strong> — usable without reading Czech, without over-engineering (see the localization decision in section 3), minimal controls</li>
+            <li><strong>Mobile reality</strong> — logging happens on-site, from a phone</li>
+            <li><strong>Complex relations, simple surface</strong> — projects, tasks, time entries, people, but the UI must hide that complexity</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>2. Discovery: why not Excel, why not an existing app?</h2>
+          <h3>Idea 1: Excel / Google Sheet</h3>
+          <p>My first instinct. I rejected it because:</p>
+          <ul>
+            <li>No clean way to do hierarchical categorization (project → task → entry)</li>
+            <li>Unusable from a mobile phone for quick on-site logging</li>
+          </ul>
+          <h3>Idea 2: Use an existing app</h3>
+          <p>This was the most painful week of the whole project. Creating test accounts, setting them up, comparing — I had to keep a sheet just to stop going in circles.</p>
+          <p><strong>Pattern:</strong> either too complex / not mobile-friendly, or too expensive, or no Czech / Ukrainian language support.</p>
+          <p>So: <strong>custom app it is.</strong> Goal — something extremely simple that beats a spreadsheet where it matters.</p>
+        </section>
+
+        <section>
+          <h2>3. The solution: Timi</h2>
+          <p>Timi is an internal web app for fast, clear timesheet reporting, approvals, and task management.</p>
+          <p class="phone-note">Screenshots show the Czech UI — the team's working language. Tap any screen to open it full size.</p>
+          <p>Core principles:</p>
+          <ul>
+            <li><strong>Log work where you are</strong> — dashboard quick-form + log directly from a task card, no context switching</li>
+            <li><strong>See if the day is OK at a glance</strong> — daily / weekly / monthly calendar views with visual check against the daily standard</li>
+            <li><strong>Trust but verify</strong> — lightweight approval workflow for leads, automatic invalidation on edit</li>
+            <li><strong>Forgiving</strong> — trash with restore + 60-day retention instead of hard deletes</li>
+          </ul>
+
+          <h3>Key UX decisions</h3>
+          <ol>
+            <li><strong>2–3 tap logging (mobile-first)</strong> Dashboard quick form: pick project → task (pre-filtered to your assignments only) → tap 15m / 30m / 45m / 1h / 2h / 4h / 8h or type minutes → optional comment → save. No timer to manage, no mandatory fields that block field use.
+              <div class="phone-grid phone-grid--2">
+                <figure>
+                  <a href="assets/img/timi/dashboard.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/dashboard.webp" alt="Timi dashboard with a prominent Log time button, today's total and today's entries" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Dashboard: one button to log, today's total at a glance</figcaption>
+                </figure>
+                <figure>
+                  <a href="assets/img/timi/quick-log.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/quick-log.webp" alt="Quick log form with project and task selects and preset duration buttons from 15 minutes to 8 hours" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Quick log with preset durations (lead view — regular users don't see worker &amp; date)</figcaption>
+                </figure>
+              </div>
+            </li>
+            <li><strong>Contextual logging from the task card</strong> The highlight interaction: you don't go to a separate Timesheet form. You tap a task, a dialog opens with project + task pre-selected. Just time + comment + save. This cut cognitive load and navigation to minimum.
+              <div class="phone-grid phone-grid--1">
+                <figure>
+                  <a href="assets/img/timi/contextual-time-entry.png" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/contextual-time-entry.png" alt="Contextual time entry dialog with project and task pre-selected" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Contextual time entry with project and task pre-selected</figcaption>
+                </figure>
+              </div>
+            </li>
+            <li><strong>Only show what is yours</strong> Task assignment (<code>task_assignments</code>) drives the whole UI — a normal user only ever sees their assigned tasks and their own entries. Leads/admins can switch between people. Less clutter = fewer mistakes.</li>
+            <li>
+              <strong>Calendar as audit, not decoration</strong>
+              <ul>
+                <li>Daily: timeline + today's entries</li>
+                <li>Weekly: 7-column grid with daily totals, color-coded against the daily fund</li>
+                <li>Monthly: matrix with per-day sums</li>
+                <li>Filters persist in the URL so a view can be shared / returned to.</li>
+              </ul>
+              <div class="phone-grid">
+                <figure>
+                  <a href="assets/img/timi/calendar-day.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/calendar-day.webp" alt="Daily timesheet view with date picker, worker filter and daily total" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Daily</figcaption>
+                </figure>
+                <figure>
+                  <a href="assets/img/timi/calendar-week.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/calendar-week.webp" alt="Weekly timesheet view with a seven-day grid and weekly total" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Weekly</figcaption>
+                </figure>
+                <figure>
+                  <a href="assets/img/timi/calendar-month.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/calendar-month.webp" alt="Monthly timesheet view with per-day sums and monthly total" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Monthly</figcaption>
+                </figure>
+              </div>
+            </li>
+            <li>
+              <strong>Approval without admin overload</strong>
+              <ul>
+                <li>Entries by a normal user start as pending_review</li>
+                <li>Lead/admin approves in one click</li>
+                <li>Entries created/edited by lead/admin are auto-approved</li>
+                <li>If a user edits an approved entry, approval is automatically invalidated → back to pending_review</li>
+                <li>Full audit log (who created, who approved, revision history) on each entry</li>
+              </ul>
+              This removed duplicate steps while keeping data reliable for invoicing. <a href="#approvals-under-the-hood">How this works under the hood →</a>
+              <div class="phone-grid phone-grid--2">
+                <figure>
+                  <a href="assets/img/timi/approvals.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/approvals.webp" alt="List of time entries from several workers with approve and return actions" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Lead's list: approve or return in one tap</figcaption>
+                </figure>
+                <figure>
+                  <a href="assets/img/timi/entry-approved.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                    <img src="assets/img/timi/entry-approved.webp" alt="Monthly view with the selected day's entry marked as approved, with a comment written in Ukrainian" width="720" height="1352" loading="lazy">
+                  </a>
+                  <figcaption>Approved entry in the calendar — note the Ukrainian comment</figcaption>
+                </figure>
+              </div>
+            </li>
+            <li><strong>Low barrier access — and a pragmatic call on localization</strong> Passwordless login (email + one-time code), minimal controls, translatable UI. No passwords to forget, no training needed.
+              <p style="margin-top: 8px;">On languages I deliberately chose browser translation over native Ukrainian/Russian UI: interface translation would not include the actual user-generated content (task names, time-entry comments) where understanding matters most — see the Ukrainian comment in the approved entry above. The Ukrainian colleagues already use browser translate confidently in daily work, and a full i18n setup with content translation would have significantly delayed delivery. Since manual notebook tracking was already unsustainable, shipping earlier had more value than shipping perfectly localized.</p>
+              <p>Making this actually work in React was a real issue to solve: browser translators mutate DOM text nodes behind React's back, which React then can't reconcile — and the app crashes. Honestly, I wasn't sure it was solvable, but it turned out to be a known problem with a standard fix. The agent added a guard that catches translator-induced crashes, and I verified the app stays stable with Google Translate / Edge auto-translate on. So Timi is explicitly translator-compatible — which isn't a given for React apps.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>4. Product tour (short)</h2>
+          <ul>
+            <li><strong>Dashboard (<code>/</code>)</strong> — today's total vs. standard, quick-log form, today's entries with edit/delete + approval badge</li>
+            <li><strong>Tasks &amp; Projects (<code>/tasks</code>)</strong> — filter by project / status (To do / In progress / Done) / person; task dialog with contextual logging; leads/admins create tasks and assign people (multi-select)</li>
+            <li><strong>Timesheet &amp; Approvals (<code>/timesheet</code>, <code>/time-entries</code>)</strong> — daily / weekly / monthly views, switch between workers (lead/admin), entry detail with audit log</li>
+            <li><strong>Reports (<code>/reports</code>)</strong> — periods (this/last week, month, quarter, custom), totals in hours &amp; days, split by project and by person, approved-only filter, CSV export for Excel / Sheets / accounting</li>
+            <li><strong>Admin (<code>/admin</code>)</strong> — users &amp; roles (user ↔ lead ↔ admin), activate/deactivate, projects, trash &amp; restore, permanent delete, 60-day auto-cleanup</li>
+          </ul>
+          <div class="phone-grid">
+            <figure>
+              <a href="assets/img/timi/reports.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                <img src="assets/img/timi/reports.webp" alt="Reports with hours split by project and by person" width="720" height="1352" loading="lazy">
+              </a>
+              <figcaption>Reports: hours by project &amp; person</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/img/timi/admin-projects.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                <img src="assets/img/timi/admin-projects.webp" alt="Admin section with project management: search, add, edit and archive projects" width="720" height="1352" loading="lazy">
+              </a>
+              <figcaption>Admin: projects</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/img/timi/trash.webp" target="_blank" rel="noopener" title="Open image in a new tab">
+                <img src="assets/img/timi/trash.webp" alt="Trash with a deleted project, days remaining until permanent deletion, and Restore button" width="720" height="1352" loading="lazy">
+              </a>
+              <figcaption>Trash: restore within 60 days</figcaption>
+            </figure>
+          </div>
+          <p>Roles in one sentence: <strong>users</strong> log only today on assigned tasks; <strong>leads</strong> log for others incl. history and approve; <strong>admins</strong> manage everything.</p>
+        </section>
+
+        <section>
+          <h2>5. How I built it (vibe-coding with FE literacy)</h2>
+          <p>I'm a UX graduate (Ing.) with a year of experience as a low-code FE developer. I'm not a React or backend developer — but I understand how a frontend works with data, and I can describe the behavior precisely enough for the AI to build the right thing. I check the result mainly by testing it: clicking through every role and scenario, including the edge cases.</p>
+          <ul>
+            <li><strong>I did:</strong> product/UX design, information architecture, business rules, solution architecture, delivery and maintenance</li>
+            <li><strong>AI did:</strong> code generation under tight spec via Supabase + React mainstream stack</li>
+            <li><strong>Why this stack:</strong> Supabase (Backend-as-a-Service, SQL for complex relations, good AI tooling) + React + Vite (mainstream, AI-friendly, simpler than Next.js) + Tailwind + shadcn/ui components</li>
+          </ul>
+          <p>What made it work was <strong>spec before code</strong>. Because I understand how a frontend consumes data, my requirements already anticipated backend needs — e.g. lists use infinite scroll (30 items per page), so hour summaries and report aggregations had to be computed on the backend, not summed on the client from downloaded pages. UX decisions drove architecture the same way: the assignment table exists so users only see relevant content; RLS rules in PostgreSQL enforce time windows and permissions so the frontend can't break them.</p>
+
+          <h3 id="approvals-under-the-hood">The hardest part: thinking it through, not drawing it</h3>
+          <p>The screens were the easy part. What took the most thinking was working out how things should behave — and then how to make that work technically. Approvals are the best example.</p>
+          <p>From the client's side it looked trivial: <em>"Just add an approved: true / false field."</em> But a single flag can't answer the questions that come up right away:</p>
+          <ul>
+            <li>What happens when someone edits an entry <strong>after</strong> it was approved? Does the approval still count?</li>
+            <li>If a lead logs an entry themselves, what's the point of making them approve it afterwards?</li>
+            <li>Who approved it, when, and was it a manual or automatic approval? Invoicing needs that trail.</li>
+            <li>How does a lead take an approval back?</li>
+          </ul>
+          <p>So I designed approval as its own record — who approved, when, and how (manual / automatic on create / automatic on update) — instead of a flag. That raised the next question: how do you tell whether an entry is approved without loading every approval for every entry and checking them on the client?</p>
+          <p>The answer was one simple rule: <strong>an approval is valid only if it's newer than the entry's last edit.</strong> When a worker edits an entry, older approvals stop counting on their own — nothing has to be reset, and the history stays intact for the audit log. When a lead edits it, a database trigger adds a fresh automatic approval for the new version, but only if the actual work data changed.</p>
+          <p>The status is evaluated on the backend: a database view attaches it to every time entry as a regular field — <code>approved</code> / <code>pending_review</code>, plus who approved it last and whether the signed-in lead is one of the approvers. The frontend never loads or checks approval records; it just reads the entry.</p>
+          <p>Taking an approval back was a deliberate exception to "keep everything". Its purpose is to fix a misclick, and an approval given by mistake has no value in the audit trail — so it's deleted. That's why a lead can only remove <strong>their own, currently valid</strong> approval, enforced by row-level security in the database. If another lead has also approved that version, the entry stays approved.</p>
+
+          <h3>What I'd watch next time</h3>
+          <p>Shadcn components were generated in a shadcn-like style but without proper shadcn CLI init — I'd set up component tooling / skills for the agent explicitly from day one.</p>
+        </section>
+
+        <section>
+          <h2>6. Impact &amp; what I learned</h2>
+          <p><strong>Before → after:</strong></p>
+          <ul>
+            <li>Manual sums with errors and missing categories → categorized entries with project/task/person/date/comment + approval state</li>
+            <li>End-of-month detective work → weekly/monthly views + CSV for invoicing and controlling</li>
+            <li>One person as bottleneck → users log for themselves in seconds, leads just approve</li>
+          </ul>
+          <p><strong>What I take away:</strong> the hardest part of a product isn't the screens, it's the rules behind them. A feature that looks like a checkbox in a meeting — like approvals — can hide most of the system's logic, and asking "what happens when…" early is what kept the data model simple.</p>
+        </section>
+      </div>
+
+      <div class="container">
+        <div class="case-nav">
+          <a href="index.html#work">← All projects</a>
+          <a class="next-project" href="animations.html">Next project: Interactive animations →</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:z.peconka@gmail.com">z.peconka@gmail.com</a>
+        <a href="tel:+420774141504">+420 774 141 504</a>
+      </div>
+      <p class="footer-copy">© <span id="year">2026</span> Zdeněk Pěčonka</p>
+    </div>
+  </footer>
+</body>
+</html>
