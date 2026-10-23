@@ -1232,6 +1232,39 @@ main:has(> .section-tinted:last-child) + .site-footer {
    CV page
    -------------------------------------------------------------------------- */
 
+.cv-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.cv-head h1 {
+  margin: 0;
+}
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.cv-download:hover,
+.cv-download:focus-visible {
+  color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
 .cv {
   max-width: var(--read);
   padding-block: 8px 80px;
