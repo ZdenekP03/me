@@ -1243,6 +1243,16 @@ main:has(> .section-tinted:last-child) + .site-footer {
 
 .cv-head h1 {
   margin: 0;
+  font-weight: 300;
+}
+
+.cv-title {
+  margin: 36px 0 8px;
+}
+
+.cv-title strong {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
 }
 
 .cv-download {
@@ -1267,7 +1277,7 @@ main:has(> .section-tinted:last-child) + .site-footer {
 
 .cv {
   max-width: var(--read);
-  padding-block: 8px 80px;
+  padding-block: 40px 80px;
 }
 
 .cv-section {
